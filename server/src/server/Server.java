@@ -47,23 +47,23 @@ public class Server
             }
             finally
             {
-                try
-                {
-                    if (in != null) in.close();
-                    if (out != null) out.close();
-                    System.out.println("IO-Streams are closed");
-                    clientSocket.close();
-                    System.out.println("Client Socket is closed");
-                    serverSocket.close();
-                    System.out.println("Server Socket is closed");
-                }
-                catch (IOException e)
-                {
-                    System.err.println("Error closing streams: " + e.getMessage());
-                }
-                System.out.println("Closing server");
+                clientSocket.close();
+                System.out.println("Client Socket is closed");
             }
         }
+        try
+        {
+            if (in != null) in.close();
+            if (out != null) out.close();
+            System.out.println("IO-Streams are closed");
+            serverSocket.close();
+            System.out.println("Server Socket is closed");
+        }
+        catch (IOException e)
+        {
+            System.err.println("Error closing streams: " + e.getMessage());
+        }
+        System.out.println("Closing server");
 
     }
 }
